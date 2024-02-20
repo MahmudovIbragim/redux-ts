@@ -1,5 +1,8 @@
 
-const initialDataL: Todo[] = []; 
+
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const initialDataL: any = []; 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const todoRedux = (state = initialDataL, action: any) => {
@@ -7,7 +10,8 @@ const todoRedux = (state = initialDataL, action: any) => {
     case "add":
       return [...state, action.payload];
     case "delete":
-      return state.filter((item) => item.id !== action.payload.id);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return state.filter((item: { id: any; }) => item.id !== action.payload.id);
     case "update":
       return action.payload;
     case "completed": 
